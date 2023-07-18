@@ -1,7 +1,6 @@
 package com.dailycodelearner.springboot.v3.bean;
 
 import lombok.*;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @Data
 @ToString
