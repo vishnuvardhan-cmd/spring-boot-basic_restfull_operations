@@ -1,18 +1,18 @@
 package com.dailycodelearner.springboot.v2.service;
 
-import com.dailycodelearner.springboot.v2.entity.User;
+import com.dailycodelearner.springboot.v2.entity.UserDto;
 
 import java.util.List;
 
 public interface UserService {
 
-    User createUser(User user);
+    UserDto createUser(UserDto userDto);
 
-    User getByUserId(int id);
+    UserDto getByUserId(int id);
 
-    List<User> getAllUsers();
+    List<UserDto> getAllUsers();
 
-    User updateUser(User user);
+    UserDto updateUser(UserDto userDto);
 
     void deleteById(int id);
 }

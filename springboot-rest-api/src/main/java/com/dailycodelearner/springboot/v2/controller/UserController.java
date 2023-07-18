@@ -1,6 +1,7 @@
 package com.dailycodelearner.springboot.v2.controller;
 
 import com.dailycodelearner.springboot.v2.entity.User;
+import com.dailycodelearner.springboot.v2.entity.UserDto;
 import com.dailycodelearner.springboot.v2.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,26 +19,26 @@ public class UserController {
 
     private UserService userService;
     @PostMapping("/user")
-    public ResponseEntity<User> createUser(@RequestBody User user){
-        User userObj = userService.createUser(user);
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
+        UserDto userObj = userService.createUser(userDto);
         return new ResponseEntity<>(userObj, HttpStatus.CREATED);
     }
 
     @GetMapping("/user/{id}")
-    public ResponseEntity<User> getByUserId(@PathVariable("id") int id){
-        User user=userService.getByUserId(id);
+    public ResponseEntity<UserDto> getByUserId(@PathVariable("id") int id){
+        UserDto user=userService.getByUserId(id);
         return new ResponseEntity<>(user,HttpStatus.FOUND);
     }
     
     @GetMapping("/user")
-    public ResponseEntity<List<User>> getAllUsers(){
-        List<User> users=userService.getAllUsers();
+    public ResponseEntity<List<UserDto>> getAllUsers(){
+        List<UserDto> users=userService.getAllUsers();
         return new ResponseEntity<>(users,HttpStatus.FOUND);
     }
 
     @PutMapping("/user")
-    public ResponseEntity<User> updateUser(@RequestBody User user){
-        User user1=userService.updateUser(user);
+    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto){
+        UserDto user1=userService.updateUser(userDto);
         return new ResponseEntity<>(user1,HttpStatus.OK);
     }
 
