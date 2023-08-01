@@ -1,6 +1,7 @@
 package com.dailycodelearner.springboot.v2.service;
 
 import com.dailycodelearner.springboot.v2.entity.User;
+import com.dailycodelearner.springboot.v2.exception.UserNotFoundException;
 import com.dailycodelearner.springboot.v2.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.hibernate.annotations.SecondaryRow;
@@ -20,7 +21,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getByUserId(int id) {
-        return userRepository.findById(id).get();
+//        userRepository.findById(id).get().orElseThrow(new UserNotFoundException());
+        return userRepository.findById(id).orElseThrow(()->new UserNotFoundException("user","id",id));
     }
 
     @Override
@@ -39,6 +41,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteById(int id) {
+        User user=userRepository.findById(id).orElseThrow(()->new UserNotFoundException("user","id",id));
         userRepository.deleteById(id);
     }
 }

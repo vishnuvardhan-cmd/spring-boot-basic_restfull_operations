@@ -1,14 +1,19 @@
 package com.dailycodelearner.springboot.v2.controller;
 
 import com.dailycodelearner.springboot.v2.entity.User;
+import com.dailycodelearner.springboot.v2.exception.ErrorDetails;
+import com.dailycodelearner.springboot.v2.exception.UserNotFoundException;
 import com.dailycodelearner.springboot.v2.service.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ServletResponseMethodArgumentResolver;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -46,4 +51,6 @@ public class UserController {
         userService.deleteById(id);
         return ResponseEntity.ok("deleted");
     }
+
+
 }
