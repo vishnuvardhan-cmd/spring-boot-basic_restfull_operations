@@ -22,4 +22,16 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorDetails> handleException(Exception exception,
+                                                                    WebRequest webRequest){
+        ErrorDetails errorDetails=new ErrorDetails();
+        errorDetails.setLocalDateTime(LocalDateTime.now());
+        errorDetails.setMessage(exception.getMessage());
+        errorDetails.setPath(webRequest.getDescription(true));
+        errorDetails.setErrorcode("Internal_Server_Error");
+
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }

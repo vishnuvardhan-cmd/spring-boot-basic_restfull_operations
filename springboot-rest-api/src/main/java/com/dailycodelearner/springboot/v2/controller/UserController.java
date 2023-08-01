@@ -4,6 +4,7 @@ import com.dailycodelearner.springboot.v2.entity.User;
 import com.dailycodelearner.springboot.v2.exception.ErrorDetails;
 import com.dailycodelearner.springboot.v2.exception.UserNotFoundException;
 import com.dailycodelearner.springboot.v2.service.UserService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ public class UserController {
 
     private UserService userService;
     @PostMapping("/user")
-    public ResponseEntity<User> createUser(@RequestBody User user){
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user){
         User userObj = userService.createUser(user);
         return new ResponseEntity<>(userObj, HttpStatus.CREATED);
     }
@@ -41,7 +42,7 @@ public class UserController {
     }
 
     @PutMapping("/user")
-    public ResponseEntity<User> updateUser(@RequestBody User user){
+    public ResponseEntity<User> updateUser(@Valid @RequestBody User user){
         User user1=userService.updateUser(user);
         return new ResponseEntity<>(user1,HttpStatus.OK);
     }
