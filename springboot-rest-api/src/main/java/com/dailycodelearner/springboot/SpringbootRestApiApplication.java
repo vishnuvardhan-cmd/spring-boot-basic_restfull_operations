@@ -1,8 +1,10 @@
 package com.dailycodelearner.springboot;
 
 import org.apache.tomcat.util.net.jsse.JSSEUtil;
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,6 +20,10 @@ import static java.util.Arrays.stream;
 @SpringBootApplication
 public class SpringbootRestApiApplication {
 
+	@Bean
+	public ModelMapper modleMapperObject(){
+		return new ModelMapper();
+	}
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootRestApiApplication.class, args);
 
